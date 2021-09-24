@@ -4,6 +4,17 @@
     <string name="button_user">Käyttäjäprofiili</string>
     <string name="button_trainings_list">Liikuntapäiväkirja</string>
     <string name="button_add_training">+</string>
+
     <!-- User profile strings-->
     <string name="tv_user_greeting">Hei!</string>
+    <string name="tv_user_name">Nimimerkki:</string>
+    <string name="edit_text_user_name_value">Syötä nimimerkki</string>
+    <string name="tv_weight">Paino:</string>
+    <string name="edit_text_weight_value">Syötä painosi</string>
+    <string name="tv_height">Pituus:</string>
+    <string name="edit_text_height_value">Syötä pituutesi</string>
+    <string name="tv_BMI">Painoindeksi</string>
+    <string name="tv_BMI_result">Tässä näkyy painoindeksisi</string>
+
+
 </resources>
