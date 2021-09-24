@@ -80,7 +80,7 @@
         android:id="@+id/tvHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/tv_height"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextHeightValue"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
 
@@ -94,8 +94,8 @@
 
     <EditText
         android:id="@+id/editTextUserNameValue"
-        android:layout_width="206dp"
-        android:layout_height="46dp"
+        android:layout_width="200sp"
+        android:layout_height="45sp"
         android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="@string/edit_text_user_name_value"
@@ -105,43 +105,43 @@
 
     <EditText
         android:id="@+id/editTextWeightValue"
-        android:layout_width="205dp"
-        android:layout_height="46dp"
+        android:layout_width="200sp"
+        android:layout_height="45sp"
         android:layout_marginBottom="15dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/edit_text_weight_value"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/editTextHeightValue"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 
     <EditText
         android:id="@+id/editTextHeightValue"
-        android:layout_width="205dp"
-        android:layout_height="45dp"
+        android:layout_width="200sp"
+        android:layout_height="45sp"
         android:layout_marginBottom="15dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/edit_text_height_value"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/tvBMIvalue"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 
     <EditText
         android:id="@+id/editTextExerciseGoalValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_width="200sp"
+        android:layout_height="45sp"
+        android:layout_marginTop="15sp"
         android:ems="10"
+        android:hint="@string/edit_text_exercise_goal"
         android:inputType="textPersonName"
-        android:hint="Name"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalCenter"
+        app:layout_constraintVertical_bias="0.012" />
 
     <TextView
         android:id="@+id/tvBMIvalue"
-        android:layout_width="205dp"
-        android:layout_height="25dp"
+        android:layout_width="200sp"
+        android:layout_height="45sp"
         android:text="@string/tv_BMI_result"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenter"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
@@ -150,10 +150,8 @@
         android:id="@+id/tvExerciseGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextExerciseGoalValue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/tv_exercise_goal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextExerciseGoalValue"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
