@@ -6,15 +6,17 @@ public class UserProfile {
     private double weight;
     private double height;
     private double bmi;
+    private int exerciseGoal;
 
-    public UserProfile(String userName, double weight, double height) {
+    public UserProfile(String userName, double weight, double height, int exerciseGoal) {
         this.userName = userName;
         this.weight = weight;
         this.height = height;
         this.bmi = bmi;
+        this.exerciseGoal = exerciseGoal;
     }
 
-    public UserProfile (){
+    public UserProfile() {
         this.userName = userName;
         this.weight = weight;
         this.height = height;
@@ -41,6 +43,6 @@ public class UserProfile {
 
     @Override
     public String toString() {
-        return userName + weight + height + bmi;
+        return userName + weight + height + bmi + exerciseGoal;
     }
 }
