@@ -30,4 +30,9 @@ public class Trainings {
         Trainings.getInstance().getTrainings().remove(i);
     }
 
+    //because Training class implements Comparable interface you can sort Trainings based on dates
+    public static void sortDates () {
+        Collections.sort(Trainings.getInstance().getTrainings());
+    }
+
 }

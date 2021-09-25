@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StayActive">
         <activity
+            android:name=".AddNewTrainingActivity"
+            android:exported="true" />
+        <activity
             android:name=".TrainingDetailsActivity"
             android:parentActivityName=".ListViewTrainingsActivity">
             <meta-data
