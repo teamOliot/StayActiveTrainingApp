@@ -13,6 +13,7 @@ public class UserProfile {
         this.weight = weight;
         this.height = height;
         this.bmi = bmi;
+        ///this.bmi = getBmi();
         this.exerciseGoal = exerciseGoal;
     }
 
