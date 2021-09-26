@@ -4,7 +4,7 @@
     <string name="button_user">Käyttäjäprofiili</string>
     <string name="button_trainings_list">Liikuntapäiväkirja</string>
     <string name="button_add_training">+</string>
-
+  
     <!-- User profile strings-->
     <string name="tv_user_greeting">Hei!</string>
     <string name="tv_user_name">Nimimerkki:</string>
@@ -18,6 +18,12 @@
     <string name="tv_exercise_goal">Liikuntatavoite</string>
     <string name="edit_text_exercise_goal">Minuuttia/päivä</string>
     <string name="image_button_save"></string>
-
-
+  
+    <!-- Spinner training types array strings-->
+      <string-array name="training_types_array">
+        <item>Juoksu</item>
+        <item>Kuntosali</item>
+        <item>Kävely</item>
+        <item>Pyöräily</item>
+    </string-array>
 </resources>

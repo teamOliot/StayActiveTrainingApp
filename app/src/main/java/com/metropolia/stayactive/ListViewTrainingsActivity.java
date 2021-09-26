@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class ListViewTrainingsActivity extends AppCompatActivity {
@@ -17,6 +18,13 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_trainings);
+
+        Button buttonAddTraining = findViewById(R.id.buttonAddTraining);
+        buttonAddTraining.setOnClickListener(view -> {
+            Log.i("testi", "testataan save buttonia");
+            Intent nextActivity = new Intent(ListViewTrainingsActivity.this, AddNewTrainingActivity.class);
+            startActivity(nextActivity);
+        });
 
         // Hardcoded training objects for testing
         if(Trainings.getInstance().getTrainings().isEmpty()) {
@@ -30,6 +38,8 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         super.onResume();
         ListView lv = findViewById(R.id.ListViewTrainings);
 
+        // sortDates() is called every time ListViewTrainingsActivity is onResume() is called
+        Trainings.sortDates();
         // Converts given list to individual list items
         lv.setAdapter(new ArrayAdapter<Training>(
                 this,
@@ -49,8 +59,4 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }
