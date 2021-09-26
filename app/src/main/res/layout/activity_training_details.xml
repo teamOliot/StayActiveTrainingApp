@@ -82,6 +82,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonDeleteTraining"
+        android:onClick="deleteTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"

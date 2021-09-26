@@ -1,7 +1,5 @@
 package com.metropolia.stayactive;
 
-import java.time.LocalDate;
-
 // with comparable interface you can compare objects
 public class Training implements Comparable<Training> {
     private String trainingType;
@@ -39,31 +37,42 @@ public class Training implements Comparable<Training> {
     }
 
     public String trainingDate() {
-        return this.day + ":" + this.month + ":" + this.year;
+        String dayValue = Integer.toString(this.day);
+        String monthValue = Integer.toString(this.month);
+        // Format dayValue always containing two characters
+        if (this.day < 10) {
+            dayValue = "0" + dayValue;
+        }
+        // Format monthValue always containing two characters
+        if (this.month < 10) {
+            monthValue = "0" + monthValue;
+        }
+        return dayValue + "." + monthValue + "." + this.year;
     }
-    /*
-    public LocalDate trainingDate() {
-        LocalDate trainingDate = LocalDate.of(this.year, this.month, this.day);
-        return trainingDate;
-    }
-    */
+
     @Override
     public String toString() {
         return trainingDate() + " " + this.trainingType;
     }
 
-    //with Comparable interface's compareTo method you can create your own compare rules
+    // with Comparable interface's compareTo method you can create your own compare rules
     @Override
     public int compareTo(Training training) {
+        // compares years of two training and returns comparing value (0, 1, -1)
         int returnValue = comparator(this.year, training.getYear());
+        // If other year value is greater than other, return -1 or 1
         if (returnValue != 0) {
             return returnValue;
         }
+        // If returnValue is 0 (years have the same values), continue comparing values of months
         returnValue = comparator(this.month, training.getMonth());
+        // If other month value is greater than other, return -1 or 1
         if (returnValue != 0) {
             return returnValue;
         }
+        // If returnValue is 0 (months have the same values), continue comparing values of days
         returnValue = comparator(this.day, training.getDay());
+        // return 0, 1 or -1
         return returnValue;
     }
 

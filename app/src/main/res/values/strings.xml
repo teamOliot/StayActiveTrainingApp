@@ -3,4 +3,10 @@
     <string name="button_user">Käyttäjäprofiili</string>
     <string name="button_trainings_list">Liikuntapäiväkirja</string>
     <string name="button_add_training">+</string>
+    <string-array name="training_types_array">
+        <item>Juoksu</item>
+        <item>Kuntosali</item>
+        <item>Kävely</item>
+        <item>Pyöräily</item>
+    </string-array>
 </resources>

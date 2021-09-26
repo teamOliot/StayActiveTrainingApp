@@ -30,20 +30,13 @@ public class TrainingDetailsActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.tvTrainingLength))
                 .setText(Integer.toString(Trainings.getInstance().getTraining(i).getTrainingLength()));
-
-        ImageButton deleteButton = findViewById(R.id.imageButtonDeleteTraining);
-        deleteButton.setOnClickListener(deleteTraining);
-
     }
 
     // Method for deleting certain training from Trainings list
-    private View.OnClickListener deleteTraining = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            // Use Trainings class deleteTraining method to delete certain Training object
-            Trainings.deleteTraining(i);
-            // Return to ListViewTrainingsActivity
-            finish();
-        }
-    };
+    public void deleteTraining (View view) {
+        // Use Trainings class deleteTraining method to delete certain Training object
+        Trainings.deleteTraining(i);
+        // Return to ListViewTrainingsActivity
+        finish();
+    }
 }

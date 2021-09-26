@@ -21,17 +21,20 @@ public class Trainings {
         return trainings;
     }
 
+    // get one training based on its index value
     public Training getTraining (int i) {
         Training training = this.trainings.get(i);
         return training;
     }
 
+    // delete one training based on its index value
     public static void deleteTraining (int i) {
         Trainings.getInstance().getTrainings().remove(i);
     }
 
-    //because Training class implements Comparable interface you can sort Trainings based on dates
+    //because Training class implements Comparable interface you can sort Trainings (list) based on dates
     public static void sortDates () {
+        // Sort original list based on Training class compareTo method
         Collections.sort(Trainings.getInstance().getTrainings());
     }
 

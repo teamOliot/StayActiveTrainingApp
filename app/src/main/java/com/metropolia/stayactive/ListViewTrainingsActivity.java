@@ -38,6 +38,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         super.onResume();
         ListView lv = findViewById(R.id.ListViewTrainings);
 
+        // sortDates() is called every time ListViewTrainingsActivity is onResume() is called
         Trainings.sortDates();
         // Converts given list to individual list items
         lv.setAdapter(new ArrayAdapter<Training>(
