@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -58,11 +60,19 @@ public class AddNewTrainingActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-     //   String text = ((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString();
-        String text = spinner.getSelectedItem().toString();
 
-        trainingType = text;
-        // spinner functionality ends
+        spinner.setOnItemSelectedListener(new SpinnerActivity() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //first,  we have to retrieve the item position as a string
+                // then, we can change string value into integer
+                String item_position = String.valueOf(position);
+
+                int positonInt = Integer.valueOf(item_position);
+                trainingType = adapter.getItem(positonInt).toString();
+            //    Toast.makeText(AddNewTrainingActivity.this, "value is "+ positonInt, Toast.LENGTH_SHORT).show();
+            }
+    });
     }
 
     public void saveNewTraining (View view) {
