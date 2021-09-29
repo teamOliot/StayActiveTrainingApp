@@ -41,7 +41,7 @@ public class UserProfile {
     }
 
     public double getBmi() {
-        this.bmi = this.weight / (this.height * this.height);
+        this.bmi = this.weight / ((this.height/100) * (this.height/100));
         return bmi;
     }
 

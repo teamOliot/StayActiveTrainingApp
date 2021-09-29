@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.lang.reflect.Method;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -20,15 +23,12 @@ public class UserProfileActivity extends AppCompatActivity {
 
     //variables for saving and retrieving User Profile info that user has inputed and has been saved to shared preferences
     private String savedUserName;
-    private Integer savedWeight;
-    private Integer savedHeight;
-    private Integer savedExerciseGoal;
+    private Integer savedWeight, savedHeight, savedExerciseGoal;
 
     // variables for Edit Text views: username, weight, height and exercise goal
-    private EditText editTextUserName;
-    private EditText editTextWeight;
-    private EditText editTextHeight;
-    private EditText editExerciseGoal;
+    private EditText editTextUserName, editTextWeight, editTextHeight, editExerciseGoal;
+
+    boolean isAllFieldsChecked = false;
 
 
     @Override
@@ -49,11 +49,22 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
-
-    // editing and adding user input values to Shared Preferences saveUserProfile() when button save is pressed
+    // Saving user information when button is pressed
     public void saveUserProfile(View v) {
+        isAllFieldsChecked = CheckAllFields();
         findViewById(R.id.imageButtonSave);
         Log.d("Debug", "imageButtonSave pressed");
+        if (isAllFieldsChecked){
+            // calling saveInfo() method if all fields are filled
+            saveInfo();
+            Log.d("Debug", "saveInfo() done");
+        }
+
+
+    }
+
+    // editing and adding user input values to Shared Preferences
+    public void saveInfo() {
         SharedPreferences.Editor userProfileEditor = userProfileStorage.edit();
         // Finding user name field and extracting text to variable, and putting it to editor
         savedUserName = editTextUserName.getText().toString();
@@ -69,6 +80,7 @@ public class UserProfileActivity extends AppCompatActivity {
         userProfileEditor.putInt("exerciseGoal", savedExerciseGoal);
         // committing all changes
         userProfileEditor.commit();
+
     }
 
     // Method for updating UI (edit text views)
@@ -84,5 +96,42 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
+    //Method for checking if inserted text is empty
+    // https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
+
+    private boolean CheckAllFields() {
+        Log.d("Debug", "CheckAllFields() executed");
+
+        if (editTextUserName.length()==0) {
+            Log.d("Debug", "editTextUserName error set");
+            editTextUserName.setError("Tämä kenttä on pakollinen");
+            return false;
+        }
+
+        if (editTextWeight.length()== 0) {
+            Log.d("Debug", "editTextWeight error set");
+            editTextWeight.setError("Tämä kenttä on pakollinen");
+            return false;
+        }
+
+        if (editTextHeight.length() == 0) {
+            Log.d("Debug", "editTextHeight error set");
+            editTextHeight.setError("Tämä kenttä on pakollinen");
+            return false;
+        }
+
+        else if (editExerciseGoal.length() == 0) {
+            Log.d("Debug", "editExcerciseGoal error set");
+            editExerciseGoal.setError("Tämä kenttä on pakollinen");
+            return false;
+        }
+        // after all validation return true.
+        return true;
+    }
+
 
 }
+
+
+
+
