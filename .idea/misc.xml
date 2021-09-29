@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/endof/AndroidStudioProjects/StayActiveTrainingApp/app/src/main/res/layout/activity_main.xml" value="0.67" />
+<<<<<<< HEAD
         <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/iinal/AndroidStudioProjects/StayActiveTrainingApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/iinal/AndroidStudioProjects/StayActiveTrainingApp/app/src/main/res/layout/activity_user_profile.xml" value="0.4" />
+=======
+<<<<<<< HEAD
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/activity_add_new_training.xml" value="0.25" />
+=======
+        <entry key="..\:/Users/endof/AndroidStudioProjects/StayActiveTrainingApp/app/src/main/res/layout/activity_user_profile.xml" value="0.33" />
+>>>>>>> f3da4587b6a37fefe7c98c387c97ff09a0faa12c
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/activity_list_view_trainings.xml" value="0.3555253623188406" />
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/list_item_layout.xml" value="0.3555253623188406" />
+>>>>>>> 3be139b4986773d583599498f9c5628ff589a099
       </map>
     </option>
   </component>
@@ -16,4 +28,26 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/endof/AndroidStudioProjects/StayActiveTrainingApp/app/src/main/res/layout/activity_main.xml" value="0.67" />
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/activity_add_new_training.xml" value="0.25" />
+        <entry key="..\:/Users/endof/AndroidStudioProjects/StayActiveTrainingApp/app/src/main/res/layout/activity_user_profile.xml" value="0.33" />
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/activity_list_view_trainings.xml" value="0.3555253623188406" />
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/henkka/project/ohjelmointi/StayActive/app/src/main/res/layout/list_item_layout.xml" value="0.3555253623188406" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+>>>>>>> 79148a41489d84e7567c04455efb6e238e7bc0cf
 </project>

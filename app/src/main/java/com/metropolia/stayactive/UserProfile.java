@@ -3,16 +3,17 @@ package com.metropolia.stayactive;
 public class UserProfile {
 
     private String userName;
-    private double weight;
-    private double height;
+    private Integer weight;
+    private Integer height;
     private double bmi;
-    private int exerciseGoal;
+    private Integer exerciseGoal;
 
-    public UserProfile(String userName, double weight, double height, int exerciseGoal) {
+    public UserProfile(String userName, int weight, int height, int exerciseGoal) {
         this.userName = userName;
         this.weight = weight;
         this.height = height;
         this.bmi = bmi;
+        ///this.bmi = getBmi();
         this.exerciseGoal = exerciseGoal;
     }
 
@@ -27,18 +28,23 @@ public class UserProfile {
         return userName;
     }
 
-    public double getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public double getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
+    public Integer getExerciseGoal() {
+        return exerciseGoal;
+    }
+
     public double getBmi() {
-        this.bmi = this.weight / (this.height * this.height);
+        this.bmi = this.weight / ((this.height/100) * (this.height/100));
         return bmi;
     }
+
 
 
     @Override

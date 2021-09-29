@@ -19,5 +19,11 @@
     <string name="edit_text_exercise_goal">Minuuttia/päivä</string>
     <string name="image_button_save"></string>
 
-
+    <!-- Spinner training types array strings-->
+      <string-array name="training_types_array">
+        <item>Juoksu</item>
+        <item>Kuntosali</item>
+        <item>Kävely</item>
+        <item>Pyöräily</item>
+    </string-array>
 </resources>
