@@ -55,7 +55,7 @@ public class UserProfileActivity extends AppCompatActivity {
         updateUI();
     }
 
-    // Saving user information when button is pressed
+    // Saving user information when @imageButtonSave is pressed
     public void saveUserProfile(View v) {
         isAllFieldsChecked = CheckAllFields();
         Log.d("Debug", "imageButtonSave pressed");
@@ -114,9 +114,12 @@ public class UserProfileActivity extends AppCompatActivity {
         } else {
             editExerciseGoal.setText("");
         }
+
         Log.d("Debug", userProfile.getBmi() + "");
         tvBMIvalue = findViewById(R.id.tvBMIvalue);
-        tvBMIvalue.setText(Float.toString(userProfile.getBmi()));
+        if (userProfile.getBmi() > 0){
+            tvBMIvalue.setText(Float.toString(userProfile.getBmi()));
+        }
         Log.d("Debug", "updateUI() done");
 
     }
