@@ -58,7 +58,6 @@ public class UserProfileActivity extends AppCompatActivity {
     // Saving user information when button is pressed
     public void saveUserProfile(View v) {
         isAllFieldsChecked = CheckAllFields();
-        findViewById(R.id.imageButtonSave);
         Log.d("Debug", "imageButtonSave pressed");
         if (isAllFieldsChecked) {
             // calling saveInfo() method if all fields are filled
