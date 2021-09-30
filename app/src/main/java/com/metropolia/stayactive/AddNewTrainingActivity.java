@@ -1,8 +1,10 @@
 package com.metropolia.stayactive;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -98,19 +100,38 @@ public class AddNewTrainingActivity extends AppCompatActivity {
             // Check if user has achieved his daily exercise goal - compare users daily exercise goal (savedExerciseGoal) to allCertainDatesMinutes
             if (savedExerciseGoal <= allCertainDatesMinutes) {
                 Log.d("debug", "tavoite saavutettu " + training.trainingDate() + " päivältä.");
-                // ...
-            }
 
-            finish();
+                // AlertDialog tells user that a certain date's exercise goal has been achieved
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddNewTrainingActivity.this);
+                builder.setMessage("Päivän " + training.trainingDate() + " liikuntatavoite on saavutettu! Hyvää työtä!");
+                // User has to click OK button to confirm that the message has been received
+                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Hides the alert dialog
+                        dialog.dismiss();
+                        // Return to ListViewTrainingsActivity
+                        finish();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            } else {
+                finish();
+            }
         }
     }
 
-    // Method for checking if inserted trainingLength value is empty
+    // Method for checking if inserted trainingLength value is empty or 0
     private boolean CheckTrainingLengthField() {
         Log.d("debug", "CheckTrainingLengthField");
 
         if (editTrainingLengthView.getText().toString().length() == 0) {
-            editTrainingLengthView.setError("Tämä kenttä on pakollinen");
+            editTrainingLengthView.setError("Tämä kenttä on pakollinen.");
+            editTrainingLengthView.requestFocus();
+            return false;
+        }
+        if (Integer.parseInt(editTrainingLengthView.getText().toString()) <= 0) {
+            editTrainingLengthView.setError("Harjoituksen keston täytyy olla suurempi kuin 0.");
             editTrainingLengthView.requestFocus();
             return false;
         }
