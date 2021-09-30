@@ -41,7 +41,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
 
-    public void getUserInfo(){
+    public void getUserInfo() {
         // getting saved info from Shared Preferences storage called userProfileStorage
         userProfileStorage = getSharedPreferences("userProfileStorage", Activity.MODE_PRIVATE);
         // getting saved values from user
@@ -115,9 +115,9 @@ public class UserProfileActivity extends AppCompatActivity {
         } else {
             editExerciseGoal.setText("");
         }
-        Log.d("Debug", userProfile.getBmi()+"");
+        Log.d("Debug", userProfile.getBmi() + "");
         tvBMIvalue = findViewById(R.id.tvBMIvalue);
-        tvBMIvalue.setText(Double.toString(userProfile.getBmi()));
+        tvBMIvalue.setText(Float.toString(userProfile.getBmi()));
         Log.d("Debug", "updateUI() done");
 
     }
