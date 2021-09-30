@@ -1,12 +1,10 @@
 package com.metropolia.stayactive;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class TrainingDetailsActivity extends AppCompatActivity {
@@ -22,21 +20,38 @@ public class TrainingDetailsActivity extends AppCompatActivity {
         i = b.getInt(ListViewTrainingsActivity.EXTRA, 0);
 
         ((TextView) findViewById(R.id.tvTrainingDate))
-                // getYear will be replaced with date value
-                .setText(Integer.toString(Trainings.getInstance().getTraining(i).getYear()));
+                .setText(Trainings.getInstance().getTraining(i).trainingDate());
 
         ((TextView) findViewById(R.id.tvTrainingType))
                 .setText(Trainings.getInstance().getTraining(i).getTrainingType());
 
         ((TextView) findViewById(R.id.tvTrainingLength))
-                .setText(Integer.toString(Trainings.getInstance().getTraining(i).getTrainingLength()));
+                .setText(Trainings.getInstance().getTraining(i).getTrainingLength() + " minuuttia");
     }
 
     // Method for deleting certain training from Trainings list
     public void deleteTraining (View view) {
-        // Use Trainings class deleteTraining method to delete certain Training object
-        Trainings.deleteTraining(i);
-        // Return to ListViewTrainingsActivity
-        finish();
+        // AlertDialog - https://stackoverflow.com/questions/22424064/creating-simple-confirmation-dialog-on-button-press-android/22424098
+        AlertDialog.Builder builder = new AlertDialog.Builder(TrainingDetailsActivity.this);
+        // builder.setTitle(R.string.app_name);
+        builder.setMessage("Haluatko varmasti poistaa harjoituksen?");
+        builder.setPositiveButton("Kyllä", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // hides the alert dialog
+                dialog.dismiss();
+                // Use Trainings class deleteTraining method to delete certain Training object
+                Trainings.deleteTraining(i);
+                // Return to ListViewTrainingsActivity
+                finish();
+            }
+        });
+        builder.setNegativeButton("Ei", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

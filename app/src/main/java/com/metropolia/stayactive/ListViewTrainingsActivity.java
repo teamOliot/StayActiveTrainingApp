@@ -3,6 +3,7 @@ package com.metropolia.stayactive;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 public class ListViewTrainingsActivity extends AppCompatActivity {
     public static final String EXTRA = "com.metropolia.stayactive.EXTRA";
 
@@ -18,6 +25,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_trainings);
+        Log.d("debug", "onCreate()");
 
         Button buttonAddTraining = findViewById(R.id.buttonAddTraining);
         buttonAddTraining.setOnClickListener(view -> {
@@ -26,16 +34,22 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
             startActivity(nextActivity);
         });
 
-        // Hardcoded training objects for testing
-        if(Trainings.getInstance().getTrainings().isEmpty()) {
-            Trainings.getInstance().getTrainings().add(new Training("juoksu", 15, 2021, 9, 24));
-            Trainings.getInstance().getTrainings().add(new Training("pyöräily", 45, 2021, 9, 24));
+        if (Trainings.getInstance().getTrainings().isEmpty()) {
+            loadData();
         }
+
+    }
+
+    @Override
+    protected  void onStart () {
+        super.onStart();
+        Log.d("debug", "onStart()");
     }
 
     @Override
     protected void onResume () {
         super.onResume();
+        Log.d("debug", "onResume()");
         ListView lv = findViewById(R.id.ListViewTrainings);
 
         // sortDates() is called every time ListViewTrainingsActivity is onResume() is called
@@ -59,4 +73,46 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onPause () {
+        super.onPause();
+        Log.d("debug", "onPause()");
+    }
+
+    @Override
+    protected void onStop () {
+        super.onStop();
+        Log.d("debug", "onStop()");
+        // save user input data (trainings list)
+        saveData();
+    }
+
+    private void saveData() {
+        Log.d("debug", "saveData()");
+        SharedPreferences sharedPreferences = getSharedPreferences("trainingsStorage", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+
+        String jsonTrainings = gson.toJson(Trainings.getInstance().getTrainings());
+        editor.putString("trainings", jsonTrainings);
+        editor.apply();
+    }
+
+    private void loadData() {
+        Log.d("debug", "loadData()");
+        SharedPreferences sharedPreferences = getSharedPreferences("trainingsStorage", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String jsonTrainings = sharedPreferences.getString("trainings", null);
+
+        Type type = new TypeToken<ArrayList<Training>>() {}.getType();
+
+        ArrayList<Training> trainingList = gson.fromJson(jsonTrainings, type);
+        if (!(trainingList == null)) {
+            for (Training training : trainingList) {
+                Trainings.getInstance().getTrainings().add(training);
+            }
+        }
+    }
+
 }
