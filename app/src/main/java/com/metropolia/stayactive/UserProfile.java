@@ -5,7 +5,7 @@ public class UserProfile {
     private String userName;
     private Integer weight;
     private Integer height;
-    private double bmi;
+    private float bmi;
     private Integer exerciseGoal;
 
     public UserProfile(String userName, int weight, int height, int exerciseGoal) {
@@ -13,7 +13,6 @@ public class UserProfile {
         this.weight = weight;
         this.height = height;
         this.bmi = bmi;
-        ///this.bmi = getBmi();
         this.exerciseGoal = exerciseGoal;
     }
 
@@ -40,8 +39,15 @@ public class UserProfile {
         return exerciseGoal;
     }
 
-    public double getBmi() {
-        this.bmi = this.weight / ((this.height/100) * (this.height/100));
+    /*public double getBmi() {
+        double height = this.height*1.0/100;
+        this.bmi = (this.weight*1.0/(height*height));
+        return this.bmi;
+    }*/
+
+    public float getBmi(){
+        float bmi;
+        bmi = (float) (this.weight*1.0/((height*1.0/100)*(height*1.0/100)));
         return bmi;
     }
 

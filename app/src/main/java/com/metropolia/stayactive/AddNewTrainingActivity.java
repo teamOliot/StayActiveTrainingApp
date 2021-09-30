@@ -76,12 +76,28 @@ public class AddNewTrainingActivity extends AppCompatActivity {
     }
 
     public void saveNewTraining (View view) {
-        //String trainingType = editTrainingTypeView.getText().toString();
-        int trainingLength = Integer.parseInt(editTrainingLengthView.getText().toString());
+        boolean isTrainingLengthFieldChecked = CheckTrainingLengthField();
 
-        Training training = new Training(trainingType, trainingLength, newYearValue, newMonthValue + 1, newDayValue);
-        Trainings.getInstance().getTrainings().add(training);
-        finish();
+        if (isTrainingLengthFieldChecked) {
+        int trainingLength = Integer.parseInt(editTrainingLengthView.getText().toString());
+        Log.d("debug", trainingLength + "");
+            Training training = new Training(trainingType, trainingLength, newYearValue, newMonthValue + 1, newDayValue);
+            Trainings.getInstance().getTrainings().add(training);
+            finish();
+        }
+    }
+
+    //Method for checking if inserted text is empty
+    // https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
+    private boolean CheckTrainingLengthField() {
+        Log.d("debug", "CheckTrainingLengthField");
+
+        if (editTrainingLengthView.getText().toString().length() == 0) {
+            editTrainingLengthView.setError("Tämä kenttä on pakollinen");
+            editTrainingLengthView.requestFocus();
+            return false;
+        }
+        return true;
     }
 
 }

@@ -27,6 +27,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
     // variables for Edit Text views: username, weight, height and exercise goal
     private EditText editTextUserName, editTextWeight, editTextHeight, editExerciseGoal;
+    private TextView tvBMIvalue;
 
     boolean isAllFieldsChecked = false;
 
@@ -35,10 +36,16 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+        getUserInfo();
+        Log.d("Debug", "OnCreate () done");
+    }
+
+
+    public void getUserInfo() {
         // getting saved info from Shared Preferences storage called userProfileStorage
         userProfileStorage = getSharedPreferences("userProfileStorage", Activity.MODE_PRIVATE);
         // getting saved values from user
-        savedUserName = userProfileStorage.getString("userName", " ");
+        savedUserName = userProfileStorage.getString("userName", "");
         savedWeight = userProfileStorage.getInt("weight", 0);
         savedHeight = userProfileStorage.getInt("height", 0);
         savedExerciseGoal = userProfileStorage.getInt("exerciseGoal", 0);
@@ -46,7 +53,6 @@ public class UserProfileActivity extends AppCompatActivity {
         userProfile = new UserProfile(savedUserName, savedWeight, savedHeight, savedExerciseGoal);
         // using method to update UI
         updateUI();
-
     }
 
     // Saving user information when button is pressed
@@ -54,12 +60,12 @@ public class UserProfileActivity extends AppCompatActivity {
         isAllFieldsChecked = CheckAllFields();
         findViewById(R.id.imageButtonSave);
         Log.d("Debug", "imageButtonSave pressed");
-        if (isAllFieldsChecked){
+        if (isAllFieldsChecked) {
             // calling saveInfo() method if all fields are filled
             saveInfo();
-            Log.d("Debug", "saveInfo() done");
-        }
 
+        }
+        getUserInfo();
 
     }
 
@@ -79,20 +85,40 @@ public class UserProfileActivity extends AppCompatActivity {
         savedExerciseGoal = Integer.parseInt(editExerciseGoal.getText().toString());
         userProfileEditor.putInt("exerciseGoal", savedExerciseGoal);
         // committing all changes
-        userProfileEditor.commit();
-
+        userProfileEditor.apply();
+        Log.d("Debug", "saveInfo() done");
     }
 
     // Method for updating UI (edit text views)
     public void updateUI() {
         editTextUserName = findViewById(R.id.editTextUserNameValue);
         editTextUserName.setText(userProfile.getUserName());
+        /* Weight, Height and Exercise goal are integeres, and value 0 has been given as preset to Shared preferences onCreate
+        Here if value is 0, text will be set to empty, so hints are visible, otherwise saved info is fetched. Username is string, so value has been saved as empty.
+        */
+
         editTextWeight = findViewById(R.id.editTextWeightValue);
-        editTextWeight.setText(Integer.toString(userProfile.getWeight()));
+        if (userProfile.getWeight() != 0) {
+            editTextWeight.setText(Integer.toString(userProfile.getWeight()));
+        } else {
+            editTextWeight.setText("");
+        }
         editTextHeight = findViewById(R.id.editTextHeightValue);
-        editTextHeight.setText(Integer.toString(userProfile.getHeight()));
+        if (userProfile.getHeight() != 0) {
+            editTextHeight.setText(Integer.toString(userProfile.getHeight()));
+        } else {
+            editTextHeight.setText("");
+        }
         editExerciseGoal = findViewById(R.id.editTextExerciseGoalValue);
-        editExerciseGoal.setText(Integer.toString(userProfile.getExerciseGoal()));
+        if (userProfile.getExerciseGoal() != 0) {
+            editExerciseGoal.setText(Integer.toString(userProfile.getExerciseGoal()));
+        } else {
+            editExerciseGoal.setText("");
+        }
+        Log.d("Debug", userProfile.getBmi() + "");
+        tvBMIvalue = findViewById(R.id.tvBMIvalue);
+        tvBMIvalue.setText(Float.toString(userProfile.getBmi()));
+        Log.d("Debug", "updateUI() done");
 
     }
 
@@ -100,15 +126,14 @@ public class UserProfileActivity extends AppCompatActivity {
     // https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
 
     private boolean CheckAllFields() {
-        Log.d("Debug", "CheckAllFields() executed");
 
-        if (editTextUserName.length()==0) {
+        if (editTextUserName.length() == 0) {
             Log.d("Debug", "editTextUserName error set");
             editTextUserName.setError("Tämä kenttä on pakollinen");
             return false;
         }
 
-        if (editTextWeight.length()== 0) {
+        if (editTextWeight.length() == 0) {
             Log.d("Debug", "editTextWeight error set");
             editTextWeight.setError("Tämä kenttä on pakollinen");
             return false;
@@ -118,15 +143,15 @@ public class UserProfileActivity extends AppCompatActivity {
             Log.d("Debug", "editTextHeight error set");
             editTextHeight.setError("Tämä kenttä on pakollinen");
             return false;
-        }
-
-        else if (editExerciseGoal.length() == 0) {
+        } else if (editExerciseGoal.length() == 0) {
             Log.d("Debug", "editExcerciseGoal error set");
             editExerciseGoal.setError("Tämä kenttä on pakollinen");
             return false;
         }
-        // after all validation return true.
+        Log.d("Debug", "CheckAllFields() done");
+        // after all validation done and user has corrected them, return true
         return true;
+
     }
 
 
