@@ -32,10 +32,24 @@ public class Trainings {
         Trainings.getInstance().getTrainings().remove(i);
     }
 
-    //because Training class implements Comparable interface you can sort Trainings (list) based on dates
+    // because Training class implements Comparable interface you can sort Trainings (list) based on dates
     public static void sortDates () {
         // Sort original list based on Training class compareTo method
         Collections.sort(Trainings.getInstance().getTrainings());
+    }
+
+    // method for checking if user has achieved date's exercise goal in minutes
+    // latestAddedTrainingDate is Training object which contains the comparing training date
+    public static int countDatesMinutes (Training latestAddedTrainingDate) {
+        int datesTrainingMinutes = 0;
+        for (Training training : Trainings.getInstance().getTrainings()) {
+            // if returnValue is 0 the dates are same
+            int returnValue = training.compareTo(latestAddedTrainingDate);
+            if (returnValue == 0) {
+                datesTrainingMinutes += training.getTrainingLength();
+            }
+        }
+        return datesTrainingMinutes;
     }
 
 }

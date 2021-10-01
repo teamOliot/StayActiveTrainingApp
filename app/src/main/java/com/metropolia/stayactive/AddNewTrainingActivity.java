@@ -1,7 +1,11 @@
 package com.metropolia.stayactive;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,21 +20,28 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class AddNewTrainingActivity extends AppCompatActivity {
-    private EditText editTrainingTypeView;
     private EditText editTrainingLengthView;
     private int newYearValue;
     private int newMonthValue;
     private int newDayValue;
     private String trainingType;
 
+    // Shared preferences storage for user profile info
+    private SharedPreferences userProfileStorage;
+    private int savedExerciseGoal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_training);
 
-    //    editTrainingTypeView = findViewById(R.id.edit_training_type);
         editTrainingLengthView = findViewById(R.id.edit_training_length);
         final CalendarView calendar = findViewById(R.id.calendarView);
+
+        // getting saved info from Shared Preferences storage called userProfileStorage
+        userProfileStorage = getSharedPreferences("userProfileStorage", Activity.MODE_PRIVATE);
+        // getting saved values from user
+        savedExerciseGoal = userProfileStorage.getInt("exerciseGoal", 0);
 
         // get current date as default value
         Calendar currentDate = Calendar.getInstance();
@@ -51,28 +62,28 @@ public class AddNewTrainingActivity extends AppCompatActivity {
             }
         });
 
-        // spinner functionality // return only "juoksu" value
+        // spinner functionality
+        // https://developer.android.com/guide/topics/ui/controls/spinner
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.training_types_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new SpinnerActivity() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //first,  we have to retrieve the item position as a string
+                // first,  we have to retrieve the item position as a string
                 // then, we can change string value into integer
                 String item_position = String.valueOf(position);
 
                 int positonInt = Integer.valueOf(item_position);
                 trainingType = adapter.getItem(positonInt).toString();
-            //    Toast.makeText(AddNewTrainingActivity.this, "value is "+ positonInt, Toast.LENGTH_SHORT).show();
-            }
-    });
+                }
+        });
     }
 
     public void saveNewTraining (View view) {
@@ -83,17 +94,44 @@ public class AddNewTrainingActivity extends AppCompatActivity {
         Log.d("debug", trainingLength + "");
             Training training = new Training(trainingType, trainingLength, newYearValue, newMonthValue + 1, newDayValue);
             Trainings.getInstance().getTrainings().add(training);
-            finish();
+
+            int allCertainDatesMinutes = Trainings.countDatesMinutes(training);
+            Log.d("debug", "certain dates minutes " + allCertainDatesMinutes);
+            // Check if user has achieved his daily exercise goal - compare users daily exercise goal (savedExerciseGoal) to allCertainDatesMinutes
+            if (savedExerciseGoal <= allCertainDatesMinutes) {
+                Log.d("debug", "tavoite saavutettu " + training.trainingDate() + " päivältä.");
+
+                // AlertDialog tells user that a certain date's exercise goal has been achieved
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddNewTrainingActivity.this);
+                builder.setMessage("Päivän " + training.trainingDate() + " liikuntatavoite on saavutettu! Hyvää työtä!");
+                // User has to click OK button to confirm that the message has been received
+                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Hides the alert dialog
+                        dialog.dismiss();
+                        // Return to ListViewTrainingsActivity
+                        finish();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            } else {
+                finish();
+            }
         }
     }
 
-    //Method for checking if inserted text is empty
-    // https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
+    // Method for checking if inserted trainingLength value is empty or 0
     private boolean CheckTrainingLengthField() {
         Log.d("debug", "CheckTrainingLengthField");
 
         if (editTrainingLengthView.getText().toString().length() == 0) {
-            editTrainingLengthView.setError("Tämä kenttä on pakollinen");
+            editTrainingLengthView.setError("Tämä kenttä on pakollinen.");
+            editTrainingLengthView.requestFocus();
+            return false;
+        }
+        if (Integer.parseInt(editTrainingLengthView.getText().toString()) <= 0) {
+            editTrainingLengthView.setError("Harjoituksen keston täytyy olla suurempi kuin 0.");
             editTrainingLengthView.requestFocus();
             return false;
         }

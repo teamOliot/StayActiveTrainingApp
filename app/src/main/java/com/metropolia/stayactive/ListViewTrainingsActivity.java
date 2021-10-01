@@ -20,12 +20,15 @@ import java.util.ArrayList;
 
 public class ListViewTrainingsActivity extends AppCompatActivity {
     public static final String EXTRA = "com.metropolia.stayactive.EXTRA";
+    private ArrayAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_trainings);
         Log.d("debug", "onCreate()");
+
+        ListView lv = findViewById(R.id.ListViewTrainings);
 
         Button buttonAddTraining = findViewById(R.id.buttonAddTraining);
         buttonAddTraining.setOnClickListener(view -> {
@@ -37,6 +40,26 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         if (Trainings.getInstance().getTrainings().isEmpty()) {
             loadData();
         }
+        // sortDates() is called every time ListViewTrainingsActivity is onResume() is called
+        Trainings.sortDates();
+        // Converts given list to individual list items
+        myAdapter = (new ArrayAdapter<Training>(
+                this,
+                R.layout.list_item_layout, //XML item layout
+                Trainings.getInstance().getTrainings())); //array of data
+
+        lv.setAdapter(myAdapter);
+        // when user clicks individual list item this method takes user to detailed view (TrainingDetailsActivity) about that list item
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("TAG", "onItemClick(" + i + ")");
+                Intent nextActivity = new Intent(ListViewTrainingsActivity.this, TrainingDetailsActivity.class);
+                // put i = index of list item to the next view
+                nextActivity.putExtra(EXTRA, i); // EXTRA is the key and i is the value
+                startActivity(nextActivity);
+            }
+        });
 
     }
 
@@ -50,12 +73,16 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
     protected void onResume () {
         super.onResume();
         Log.d("debug", "onResume()");
-        ListView lv = findViewById(R.id.ListViewTrainings);
+    //    ListView lv = findViewById(R.id.ListViewTrainings);
 
         // sortDates() is called every time ListViewTrainingsActivity is onResume() is called
         Trainings.sortDates();
+        // When myAdapter.notifyDataSetChanged() has been called, myAdapter is updated
+        myAdapter.notifyDataSetChanged();
+
+        // tästä alta voidaan poistaa kommentoudut osuudet, kun toimivuus varmistettu
         // Converts given list to individual list items
-        lv.setAdapter(new ArrayAdapter<Training>(
+      /*  lv.setAdapter(new ArrayAdapter<Training>(
                 this,
                 R.layout.list_item_layout, //XML item layout
                 Trainings.getInstance().getTrainings()) //array of data
@@ -72,6 +99,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
                 startActivity(nextActivity);
             }
         });
+       */
     }
 
     @Override
