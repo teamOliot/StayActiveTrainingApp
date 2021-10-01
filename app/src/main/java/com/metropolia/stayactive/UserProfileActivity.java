@@ -62,9 +62,10 @@ public class UserProfileActivity extends AppCompatActivity {
         if (isAllFieldsChecked) {
             // calling saveInfo() method if all fields are filled
             saveInfo();
+            // calling getUserInfo() so that saved user info is also updated to UI
+            getUserInfo();
 
         }
-        getUserInfo();
 
     }
 
@@ -132,22 +133,26 @@ public class UserProfileActivity extends AppCompatActivity {
         if (editTextUserName.length() == 0) {
             Log.d("Debug", "editTextUserName error set");
             editTextUserName.setError("Tämä kenttä on pakollinen");
+            editTextUserName.requestFocus();
             return false;
         }
 
         if (editTextWeight.length() == 0) {
             Log.d("Debug", "editTextWeight error set");
             editTextWeight.setError("Tämä kenttä on pakollinen");
+            editTextWeight.requestFocus();
             return false;
         }
 
         if (editTextHeight.length() == 0) {
             Log.d("Debug", "editTextHeight error set");
             editTextHeight.setError("Tämä kenttä on pakollinen");
+            editTextHeight.requestFocus();
             return false;
         } else if (editExerciseGoal.length() == 0) {
             Log.d("Debug", "editExcerciseGoal error set");
             editExerciseGoal.setError("Tämä kenttä on pakollinen");
+            editExerciseGoal.requestFocus();
             return false;
         }
         Log.d("Debug", "CheckAllFields() done");
