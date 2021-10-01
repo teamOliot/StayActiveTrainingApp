@@ -14,11 +14,6 @@ public class UserProfile {
         this.exerciseGoal = exerciseGoal;
     }
 
-    public UserProfile() {
-        this.userName = userName;
-        this.weight = weight;
-        this.height = height;
-    }
 
     public String getUserName() {
         return userName;
@@ -37,11 +32,12 @@ public class UserProfile {
     }
 
 
-    public float getBmi(){
+    public Integer getBmi(){
         float bmi;
         bmi = (float) (this.weight*1.0/((height*1.0/100)*(height*1.0/100)));
         bmi=Math.round(bmi);
-        return bmi;
+        int returnBmi = (int) bmi;
+        return returnBmi;
     }
 
 

@@ -119,7 +119,7 @@ public class UserProfileActivity extends AppCompatActivity {
         Log.d("Debug", userProfile.getBmi() + "");
         tvBMIvalue = findViewById(R.id.tvBMIvalue);
         if (userProfile.getBmi() > 0){
-            tvBMIvalue.setText(Float.toString(userProfile.getBmi()));
+            tvBMIvalue.setText(Integer.toString(userProfile.getBmi()));
         }
         Log.d("Debug", "updateUI() done");
 
