@@ -55,10 +55,11 @@ public class Training implements Comparable<Training> {
         return trainingDate() + " " + this.trainingType;
     }
 
-    // with Comparable interface's compareTo method you can create your own compare rules
+    // With Comparable interface's compareTo method you can create your own compare rules
+    // This compareTo method comparing trainings dates (int year, int month, int day)
     @Override
     public int compareTo(Training training) {
-        // compares years of two training and returns comparing value (0, 1, -1)
+        // Compares years of two training and returns comparing value (0, 1, -1)
         int returnValue = comparator(this.year, training.getYear());
         // If other year value is greater than other, return -1 or 1
         if (returnValue != 0) {
@@ -72,11 +73,11 @@ public class Training implements Comparable<Training> {
         }
         // If returnValue is 0 (months have the same values), continue comparing values of days
         returnValue = comparator(this.day, training.getDay());
-        // return 0, 1 or -1
+        // Return 0, 1 or -1
         return returnValue;
     }
 
-    // method for helping compareTo method
+    // Method for helping compareTo method
     public int comparator (int firstNumber, int secondNumber) {
         if (firstNumber == secondNumber) {
             return 0;
@@ -86,5 +87,4 @@ public class Training implements Comparable<Training> {
             return -1;
         }
     }
-
 }

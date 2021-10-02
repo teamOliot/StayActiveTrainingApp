@@ -21,24 +21,24 @@ public class Trainings {
         return trainings;
     }
 
-    // get one training based on its index value
+    // Get one training based on its index value
     public Training getTraining (int i) {
         Training training = this.trainings.get(i);
         return training;
     }
 
-    // delete one training based on its index value
+    // Delete one training based on its index value
     public static void deleteTraining (int i) {
         Trainings.getInstance().getTrainings().remove(i);
     }
 
-    // because Training class implements Comparable interface you can sort Trainings (list) based on dates
+    // Because Training class implements Comparable interface you can sort Trainings (list) based on dates
     public static void sortDates () {
         // Sort original list based on Training class compareTo method
         Collections.sort(Trainings.getInstance().getTrainings());
     }
 
-    // method for checking if user has achieved date's exercise goal in minutes
+    // Method for checking if user has achieved date's exercise goal in minutes
     // latestAddedTrainingDate is Training object which contains the comparing training date
     public static int countDatesMinutes (Training latestAddedTrainingDate) {
         int datesTrainingMinutes = 0;
@@ -51,5 +51,4 @@ public class Trainings {
         }
         return datesTrainingMinutes;
     }
-
 }
