@@ -38,6 +38,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         });
 
         if (Trainings.getInstance().getTrainings().isEmpty()) {
+            // Load trainings list data
             loadData();
         }
         // sortDates() sorts trainings list based on trainings dates
@@ -86,6 +87,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         saveData();
     }
 
+    // https://stackoverflow.com/questions/7145606/how-do-you-save-store-objects-in-sharedpreferences-on-android
     private void saveData() {
         Log.d("debug", "saveData()");
         SharedPreferences sharedPreferences = getSharedPreferences("trainingsStorage", MODE_PRIVATE);
@@ -97,16 +99,18 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    // https://stackoverflow.com/questions/7145606/how-do-you-save-store-objects-in-sharedpreferences-on-android
     private void loadData() {
         Log.d("debug", "loadData()");
         SharedPreferences sharedPreferences = getSharedPreferences("trainingsStorage", MODE_PRIVATE);
         Gson gson = new Gson();
         String jsonTrainings = sharedPreferences.getString("trainings", null);
-
         Type type = new TypeToken<ArrayList<Training>>() {}.getType();
-
+        // Add stored Training objects in trainingList
         ArrayList<Training> trainingList = gson.fromJson(jsonTrainings, type);
+
         if (!(trainingList == null)) {
+            // Add trainingList values (Training objects) in singleton Trainings list
             for (Training training : trainingList) {
                 Trainings.getInstance().getTrainings().add(training);
             }

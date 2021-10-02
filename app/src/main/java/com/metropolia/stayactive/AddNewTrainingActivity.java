@@ -90,7 +90,9 @@ public class AddNewTrainingActivity extends AppCompatActivity {
         if (isTrainingLengthFieldChecked) {
         int trainingLength = Integer.parseInt(editTrainingLengthView.getText().toString());
         Log.d("debug", trainingLength + "");
+            // Create new Training object. We add 1 in newMonthValue because CalendarView start counting monthValue index from 0
             Training training = new Training(trainingType, trainingLength, newYearValue, newMonthValue + 1, newDayValue);
+            // Add new Training object in Trainings list
             Trainings.getInstance().getTrainings().add(training);
 
             int allCertainDatesMinutes = Trainings.countDatesMinutes(training);
@@ -98,7 +100,6 @@ public class AddNewTrainingActivity extends AppCompatActivity {
             // Check if user has achieved his daily exercise goal - compare users daily exercise goal (savedExerciseGoal) to allCertainDatesMinutes
             if (savedExerciseGoal <= allCertainDatesMinutes) {
                 Log.d("debug", "tavoite saavutettu " + training.trainingDate() + " päivältä.");
-
                 // AlertDialog tells user that a certain date's exercise goal has been achieved
                 AlertDialog.Builder builder = new AlertDialog.Builder(AddNewTrainingActivity.this);
                 builder.setMessage("Päivän " + training.trainingDate() + " liikuntatavoite on saavutettu! Hyvää työtä!");
