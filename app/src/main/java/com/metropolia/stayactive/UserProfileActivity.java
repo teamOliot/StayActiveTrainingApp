@@ -9,9 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Method;
+
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class UserProfileActivity extends AppCompatActivity {
     // Shared preferences storage for user profile info
     private SharedPreferences userProfileStorage;
 
-    //variables for saving and retrieving User Profile info that user has inputed and has been saved to shared preferences
+    //variables for saving and retrieving User Profile info that user has inputted and has been saved to shared preferences
     private String savedUserName;
     private Integer savedWeight, savedHeight, savedExerciseGoal;
 
@@ -62,9 +61,10 @@ public class UserProfileActivity extends AppCompatActivity {
         if (isAllFieldsChecked) {
             // calling saveInfo() method if all fields are filled
             saveInfo();
+            // calling getUserInfo() so that saved user info is also updated to UI
+            getUserInfo();
 
         }
-        getUserInfo();
 
     }
 
@@ -92,7 +92,7 @@ public class UserProfileActivity extends AppCompatActivity {
     public void updateUI() {
         editTextUserName = findViewById(R.id.editTextUserNameValue);
         editTextUserName.setText(userProfile.getUserName());
-        /* Weight, Height and Exercise goal are integeres, and value 0 has been given as preset to Shared preferences onCreate
+        /* Weight, Height and Exercise goal are integers, and value 0 has been given as preset to Shared preferences onCreate
         Here if value is 0, text will be set to empty, so hints are visible, otherwise saved info is fetched. Username is string, so value has been saved as empty.
         */
 
@@ -118,7 +118,7 @@ public class UserProfileActivity extends AppCompatActivity {
         Log.d("Debug", userProfile.getBmi() + "");
         tvBMIvalue = findViewById(R.id.tvBMIvalue);
         if (userProfile.getBmi() > 0){
-            tvBMIvalue.setText(Float.toString(userProfile.getBmi()));
+            tvBMIvalue.setText(Integer.toString(userProfile.getBmi()));
         }
         Log.d("Debug", "updateUI() done");
 
@@ -132,22 +132,26 @@ public class UserProfileActivity extends AppCompatActivity {
         if (editTextUserName.length() == 0) {
             Log.d("Debug", "editTextUserName error set");
             editTextUserName.setError("Tämä kenttä on pakollinen");
+            editTextUserName.requestFocus();
             return false;
         }
 
         if (editTextWeight.length() == 0) {
             Log.d("Debug", "editTextWeight error set");
             editTextWeight.setError("Tämä kenttä on pakollinen");
+            editTextWeight.requestFocus();
             return false;
         }
 
         if (editTextHeight.length() == 0) {
             Log.d("Debug", "editTextHeight error set");
             editTextHeight.setError("Tämä kenttä on pakollinen");
+            editTextHeight.requestFocus();
             return false;
         } else if (editExerciseGoal.length() == 0) {
-            Log.d("Debug", "editExcerciseGoal error set");
+            Log.d("Debug", "editExerciseGoal error set");
             editExerciseGoal.setError("Tämä kenttä on pakollinen");
+            editExerciseGoal.requestFocus();
             return false;
         }
         Log.d("Debug", "CheckAllFields() done");
