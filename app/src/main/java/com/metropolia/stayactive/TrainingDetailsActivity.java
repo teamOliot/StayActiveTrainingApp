@@ -16,7 +16,7 @@ public class TrainingDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_training_details);
 
         Bundle b = getIntent().getExtras();
-        // get value of extra. If there is no given EXTRA value, give defaultValue(0)
+        // Get value of extra. If there is no given EXTRA value, give defaultValue(0)
         i = b.getInt(ListViewTrainingsActivity.EXTRA, 0);
 
         ((TextView) findViewById(R.id.tvTrainingDate))
@@ -33,11 +33,10 @@ public class TrainingDetailsActivity extends AppCompatActivity {
     public void deleteTraining (View view) {
         // AlertDialog - https://stackoverflow.com/questions/22424064/creating-simple-confirmation-dialog-on-button-press-android/22424098
         AlertDialog.Builder builder = new AlertDialog.Builder(TrainingDetailsActivity.this);
-        // builder.setTitle(R.string.app_name);
         builder.setMessage("Haluatko varmasti poistaa harjoituksen?");
         builder.setPositiveButton("Kyllä", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // hides the alert dialog
+                // Hides the alert dialog
                 dialog.dismiss();
                 // Use Trainings class deleteTraining method to delete certain Training object
                 Trainings.deleteTraining(i);

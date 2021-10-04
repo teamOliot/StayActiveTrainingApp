@@ -16,15 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-    /*    Button buttonAddTraining = findViewById(R.id.buttonAddTraining);
-        buttonAddTraining.setOnClickListener(view -> {
-            Log.d("debug", "testataan add buttonia");
-            Intent nextActivity = new Intent(MainActivity.this, AddNewTrainingActivity.class);
-            startActivity(nextActivity);
-        });*/
-
     }
+
     //takes user to UserProfileActivity
     public void toUserProfileView (View view) {
         Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
