@@ -55,20 +55,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ListView>
+        app:layout_constraintTop_toTopOf="parent"></ListView>
 
     <Button
         android:id="@+id/buttonAddTraining"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@drawable/rounded_corner"
         android:text="@string/button_add_training"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalCenter"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalCenter"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 </androidx.constraintlayout.widget.ConstraintLayout>

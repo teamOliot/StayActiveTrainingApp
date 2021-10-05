@@ -33,14 +33,15 @@
 
     <ImageButton
         android:id="@+id/imageButtonSave"
-        android:text="image_button_save"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@drawable/rounded_corner"
+        android:contentDescription="Save"
         android:onClick="saveNewTraining"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="image_button_save"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalBottom"
-        app:srcCompat="@android:drawable/ic_menu_save"
-        android:contentDescription="Save"/>
+        app:srcCompat="@android:drawable/ic_menu_save" />
 
     <CalendarView
         android:id="@+id/calendarView"
