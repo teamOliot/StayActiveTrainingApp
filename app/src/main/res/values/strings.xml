@@ -13,9 +13,9 @@
     <string name="edit_text_weight_value">Syötä painosi</string>
     <string name="tv_height">Pituus:</string>
     <string name="edit_text_height_value">Syötä pituutesi</string>
-    <string name="tv_BMI">Painoindeksi</string>
+    <string name="tv_BMI">Painoindeksi:</string>
     <string name="tv_BMI_result">Tähän tulee painoindeksisi</string>
-    <string name="tv_exercise_goal">Liikuntatavoite</string>
+    <string name="tv_exercise_goal">Liikuntatavoite:</string>
     <string name="edit_text_exercise_goal">Minuuttia/päivä</string>
     <string name="image_button_save"></string>
 

@@ -8,19 +8,21 @@
     tools:context=".UserProfileActivity">
 
     <!--Here is text view for greeting -->
+    <!--Here are all text views related to user info -->
     <TextView
         android:id="@+id/tvUserGreeting"
+        style="@style/FontSizeUniform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="184dp"
         android:text="@string/tv_user_greeting"
-        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/editTextUserNameValue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
-    <!--Here are all text views related to user info -->
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
@@ -61,54 +63,54 @@
     <!--Autofillhints https://developer.android.com/guide/topics/text/autofill-optimize-->
     <EditText
         android:id="@+id/editTextUserNameValue"
+        style="@style/FontSizeUniform"
         android:layout_width="200sp"
-        android:layout_height="45sp"
+        android:layout_height="48dp"
         android:layout_marginBottom="24dp"
+        android:autofillHints="newUsername"
         android:hint="@string/edit_text_user_name_value"
         android:inputType="textPersonName"
-        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/editTextWeightValue"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        android:autofillHints="newUsername" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 
     <EditText
         android:id="@+id/editTextWeightValue"
+        style="@style/FontSizeUniform"
         android:layout_width="200sp"
-        android:layout_height="45sp"
+        android:layout_height="48dp"
         android:layout_marginBottom="15dp"
         android:ems="10"
         android:hint="@string/edit_text_weight_value"
+        android:importantForAutofill="no"
         android:inputType="number"
-        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/editTextHeightValue"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        android:importantForAutofill="no" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 
     <EditText
         android:id="@+id/editTextHeightValue"
+        style="@style/FontSizeUniform"
         android:layout_width="200sp"
-        android:layout_height="45sp"
+        android:layout_height="48dp"
         android:layout_marginBottom="15dp"
         android:hint="@string/edit_text_height_value"
+        android:importantForAutofill="no"
         android:inputType="number"
-        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/tvBMIvalue"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        android:importantForAutofill="no" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 
     <EditText
         android:id="@+id/editTextExerciseGoalValue"
+        style="@style/FontSizeUniform"
         android:layout_width="200sp"
-        android:layout_height="45sp"
+        android:layout_height="48dp"
         android:layout_marginTop="15sp"
         android:hint="@string/edit_text_exercise_goal"
+        android:importantForAutofill="no"
         android:inputType="number"
-        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalCenter"
-        app:layout_constraintVertical_bias="0.012"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.012" />
     <!--Here are text views to show BMI-->
     <TextView
         android:id="@+id/tvBMIvalue"
