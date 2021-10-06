@@ -89,6 +89,8 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     // Method for updating UI (edit text views)
+
+
     public void updateUI() {
         editTextUserName = findViewById(R.id.editTextUserNameValue);
         editTextUserName.setText(userProfile.getUserName());
