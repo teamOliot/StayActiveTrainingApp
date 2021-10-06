@@ -83,8 +83,9 @@
     <ImageButton
         android:id="@+id/imageButtonDeleteTraining"
         android:onClick="deleteTraining"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@drawable/rounded_corner"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
