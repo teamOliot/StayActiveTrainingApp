@@ -7,6 +7,29 @@
     android:background="@drawable/bg_silhouette_sideways"
     tools:context=".ListViewTrainingsActivity">
 
+    <ListView
+        android:id="@+id/ListViewTrainings"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/buttonAddTraining"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:background="@drawable/rounded_corner"
+        android:text="@string/button_add_training"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontalTop"
         android:layout_width="wrap_content"
@@ -49,24 +72,4 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.90" />
 
-    <ListView
-        android:id="@+id/ListViewTrainings"
-        android:layout_width="357dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ListView>
-
-    <Button
-        android:id="@+id/buttonAddTraining"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:background="@drawable/rounded_corner"
-        android:text="@string/button_add_training"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 </androidx.constraintlayout.widget.ConstraintLayout>
