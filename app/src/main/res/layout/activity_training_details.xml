@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_silhouette_sideways"
     tools:context=".TrainingDetailsActivity">
 
     <TextView
         android:id="@+id/tvTrainingDate"
+        style="@style/FontSizeUniform"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="TextView"
-        style="@style/FontSizeUniform"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
 
     <TextView
         android:id="@+id/tvTrainingType"
+        style="@style/FontSizeUniform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="TextView"
-        style="@style/FontSizeUniform"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
@@ -31,10 +33,10 @@
 
     <TextView
         android:id="@+id/tvTrainingLength"
+        style="@style/FontSizeUniform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenter"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintHorizontal_bias="0.501"
@@ -85,14 +87,12 @@
 
     <ImageButton
         android:id="@+id/imageButtonDeleteTraining"
-        android:onClick="deleteTraining"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:background="@drawable/rounded_corner"
+        android:onClick="deleteTraining"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalCenter"
         app:srcCompat="@android:drawable/ic_menu_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
