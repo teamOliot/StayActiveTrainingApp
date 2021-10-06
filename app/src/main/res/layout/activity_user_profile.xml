@@ -14,6 +14,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="184dp"
         android:text="@string/tv_user_greeting"
+        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/editTextUserNameValue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_user_name"
+        style="@style/FontSizeUniform"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextUserNameValue"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
 
@@ -32,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_weight"
+        style="@style/FontSizeUniform"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextWeightValue"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
 
@@ -40,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_height"
+        style="@style/FontSizeUniform"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextHeightValue"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
 
@@ -48,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_BMI"
+        style="@style/FontSizeUniform"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvBMIvalue"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
 
@@ -58,9 +63,9 @@
         android:layout_width="200sp"
         android:layout_height="45sp"
         android:layout_marginBottom="24dp"
-        android:ems="10"
         android:hint="@string/edit_text_user_name_value"
         android:inputType="textPersonName"
+        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/editTextWeightValue"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         android:autofillHints="newUsername" />
@@ -73,6 +78,7 @@
         android:ems="10"
         android:hint="@string/edit_text_weight_value"
         android:inputType="number"
+        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/editTextHeightValue"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         android:importantForAutofill="no" />
@@ -82,9 +88,9 @@
         android:layout_width="200sp"
         android:layout_height="45sp"
         android:layout_marginBottom="15dp"
-        android:ems="10"
         android:hint="@string/edit_text_height_value"
         android:inputType="number"
+        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/tvBMIvalue"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         android:importantForAutofill="no" />
@@ -94,9 +100,9 @@
         android:layout_width="200sp"
         android:layout_height="45sp"
         android:layout_marginTop="15sp"
-        android:ems="10"
         android:hint="@string/edit_text_exercise_goal"
         android:inputType="number"
+        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalCenter"
@@ -108,6 +114,7 @@
         android:layout_width="200sp"
         android:layout_height="45sp"
         android:text="@string/tv_BMI_result"
+        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenter"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight" />
 
@@ -116,6 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_exercise_goal"
+        style="@style/FontSizeUniform"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextExerciseGoalValue"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft" />
     <!--This is image button for saving user input info-->

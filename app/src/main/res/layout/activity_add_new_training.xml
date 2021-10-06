@@ -21,7 +21,6 @@
         android:layout_width="271dp"
         android:layout_height="53dp"
         android:layout_marginTop="48dp"
-        android:fontFamily="sans-serif-light"
         android:hint="Kesto minuutteina"
         android:inputType="number"
         style="@style/FontSizeUniform"

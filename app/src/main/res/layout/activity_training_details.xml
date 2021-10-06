@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="TextView"
+        style="@style/FontSizeUniform"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalTop" />
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="TextView"
+        style="@style/FontSizeUniform"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
@@ -32,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        style="@style/FontSizeUniform"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalCenter"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintHorizontal_bias="0.501"
