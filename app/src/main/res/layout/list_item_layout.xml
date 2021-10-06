@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!--@Authors Katja Dahlman, Iina Laamo,Henrik Lappi -->
 <TextView
     android:layout_width="250sp"
     android:layout_height="80sp"
