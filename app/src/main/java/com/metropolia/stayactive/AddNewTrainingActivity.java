@@ -148,7 +148,7 @@ public class AddNewTrainingActivity extends AppCompatActivity {
             return false;
         }
         if (Integer.parseInt(editTrainingLengthView.getText().toString()) <= 0) {
-            editTrainingLengthView.setError("Harjoituksen keston täytyy olla suurempi kuin 0.");
+            editTrainingLengthView.setError("Harjoituksen keston täytyy olla pidempi kuin 0 minuuttia.");
             editTrainingLengthView.requestFocus();
             return false;
         }
