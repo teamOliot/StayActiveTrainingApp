@@ -18,10 +18,22 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * Activity for displaying all added trainings in ListView
+ * @author Henrik Lappi
+ * @author Iina Laamo
+ * @version 10/2021
+ */
 public class ListViewTrainingsActivity extends AppCompatActivity {
     public static final String EXTRA = "com.metropolia.stayactive.EXTRA";
     private ArrayAdapter myAdapter;
 
+    /**
+     * onCreate displays the ListView which contains all trainings and buttonAddTraining
+     * Each training can be clicked and this opens a TrainingDetailsActivity
+     * buttonAddTraining can be clicked and this opens AddNewTrainingActivity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +44,6 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
 
         Button buttonAddTraining = findViewById(R.id.buttonAddTraining);
         buttonAddTraining.setOnClickListener(view -> {
-            Log.i("testi", "testataan save buttonia");
             Intent nextActivity = new Intent(ListViewTrainingsActivity.this, AddNewTrainingActivity.class);
             startActivity(nextActivity);
         });
@@ -46,8 +57,8 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         // Converts given list to individual list items
         myAdapter = (new ArrayAdapter<Training>(
                 this,
-                R.layout.list_item_layout, //XML item layout
-                Trainings.getInstance().getTrainings())); //array of data
+                R.layout.list_item_layout, // XML item layout
+                Trainings.getInstance().getTrainings())); // Array of data
 
         lv.setAdapter(myAdapter);
         // When user clicks individual list item this method takes user to detailed view (TrainingDetailsActivity) about that list item
@@ -56,13 +67,16 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("TAG", "onItemClick(" + i + ")");
                 Intent nextActivity = new Intent(ListViewTrainingsActivity.this, TrainingDetailsActivity.class);
-                // put i = index of list item to the next view
+                // Put i (index of list item) to the next view
                 nextActivity.putExtra(EXTRA, i); // EXTRA is the key and i is the value
                 startActivity(nextActivity);
             }
         });
     }
 
+    /**
+     * onResume sorts trainings based on their dates and updates myAdapter
+     */
     @Override
     protected void onResume () {
         super.onResume();
@@ -73,21 +87,18 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         myAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    protected void onPause () {
-        super.onPause();
-        Log.d("debug", "onPause()");
-    }
-
+    /**
+     * onStop saves user input data (trainings list)
+     */
     @Override
     protected void onStop () {
         super.onStop();
         Log.d("debug", "onStop()");
-        // Save user input data (trainings list)
         saveData();
     }
 
     // https://stackoverflow.com/questions/7145606/how-do-you-save-store-objects-in-sharedpreferences-on-android
+    // Based on Trainings list, makes a Gson object and saves it to SharedPreferences
     private void saveData() {
         Log.d("debug", "saveData()");
         SharedPreferences sharedPreferences = getSharedPreferences("trainingsStorage", MODE_PRIVATE);
@@ -100,6 +111,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
     }
 
     // https://stackoverflow.com/questions/7145606/how-do-you-save-store-objects-in-sharedpreferences-on-android
+    // Gets Trainings list data from SharedPreferences and saves the data in Trainings list
     private void loadData() {
         Log.d("debug", "loadData()");
         SharedPreferences sharedPreferences = getSharedPreferences("trainingsStorage", MODE_PRIVATE);

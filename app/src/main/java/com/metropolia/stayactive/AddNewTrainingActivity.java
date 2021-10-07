@@ -17,6 +17,12 @@ import android.widget.Spinner;
 
 import java.util.Calendar;
 
+/**
+ * Activity for adding new training
+ * @author Iina Laamo
+ * @author Henrik Lappi
+ * @version 10/2021
+ */
 public class AddNewTrainingActivity extends AppCompatActivity {
     private EditText editTrainingLengthView;
     private int newYearValue;
@@ -28,6 +34,10 @@ public class AddNewTrainingActivity extends AppCompatActivity {
     private SharedPreferences userProfileStorage;
     private int savedExerciseGoal;
 
+    /**
+     * onCreate displays a form (containing CalendarView, Spinner and EditText for training length) for adding new training information
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +94,14 @@ public class AddNewTrainingActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method for saving new training information
+     * Checks that user's input in training length is valid
+     * Creates a Training object and adds it to the Trainings list
+     * Displays an AlertDialog if user has achieved their daily exercise goal
+     * At the end finish(); method returns the user to the previous activity
+     * @param view
+     */
     public void saveNewTraining (View view) {
         boolean isTrainingLengthFieldChecked = CheckTrainingLengthField();
 
