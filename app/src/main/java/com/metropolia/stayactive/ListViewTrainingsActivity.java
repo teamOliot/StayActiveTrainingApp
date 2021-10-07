@@ -97,6 +97,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         saveData();
     }
 
+    // Gson @authors Henrik Lappi, Iina Laamo, Katja Dahlman
     // https://stackoverflow.com/questions/7145606/how-do-you-save-store-objects-in-sharedpreferences-on-android
     // Based on Trainings list, makes a Gson object and saves it to SharedPreferences
     private void saveData() {
@@ -110,6 +111,7 @@ public class ListViewTrainingsActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    // Gson @authors Henrik Lappi, Iina Laamo, Katja Dahlman
     // https://stackoverflow.com/questions/7145606/how-do-you-save-store-objects-in-sharedpreferences-on-android
     // Gets Trainings list data from SharedPreferences and saves the data in Trainings list
     private void loadData() {
