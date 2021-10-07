@@ -2,7 +2,7 @@ package com.metropolia.stayactive;
 
 /** A class for user profile
  * @author Katja Dahlman
- *
+ * @version 10/2021
  */
 public class UserProfile {
 
@@ -57,7 +57,7 @@ public class UserProfile {
         return exerciseGoal;
     }
 
-    /** Method for getting and calculating users body mass index.
+    /** Method for getting and calculating users body mass index
      * @author Katja Dahlman
      * @return A integer calculated from weight and height values user gives. First counted in float and then returned as rounded to integer.
      */
@@ -69,10 +69,9 @@ public class UserProfile {
         return returnBmi;
     }
 
-
-
     @Override
     public String toString() {
         return userName + weight + height + exerciseGoal;
     }
+
 }

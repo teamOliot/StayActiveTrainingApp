@@ -7,7 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".AddNewTrainingActivity">
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="359dp"
+        android:layout_height="308dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- With a Spinner user can select one value from a list.
+    Clicking the Spinner displays a dropdown menu with the available values. -->
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="291dp"
@@ -42,15 +52,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalBottom"
         app:srcCompat="@android:drawable/ic_menu_save" />
-
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="359dp"
-        android:layout_height="308dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontalTop"

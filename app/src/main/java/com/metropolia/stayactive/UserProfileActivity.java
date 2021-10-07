@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/**@author Katja Dahlman
- *
+/** @author Katja Dahlman
+ * @version 10/2021
  */
 
 public class UserProfileActivity extends AppCompatActivity {

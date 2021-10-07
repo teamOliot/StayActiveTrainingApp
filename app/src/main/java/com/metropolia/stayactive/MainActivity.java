@@ -18,19 +18,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    //takes user to UserProfileActivity
+    // Takes user to UserProfileActivity
     public void toUserProfileView (View view) {
         Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
         Log.d("debug", "buttonUserProfile button works");
         startActivity(intent);
     }
 
-    // takes user to ListViewTrainingsActivity
+    // Takes user to ListViewTrainingsActivity
     public void toTrainingsListView (View view) {
         Intent intent = new Intent(MainActivity.this, ListViewTrainingsActivity.class);
         Log.d("debug", "buttonTrainingsList button works");
         startActivity(intent);
     }
-
-
 }
