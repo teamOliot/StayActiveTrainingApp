@@ -3,7 +3,6 @@ package com.metropolia.stayactive;
 import android.app.Activity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 // https://developer.android.com/guide/topics/ui/controls/spinner
 public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {

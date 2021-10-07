@@ -44,7 +44,6 @@ public class UserProfileActivity extends AppCompatActivity {
         Log.d("Debug", "OnCreate () done");
     }
 
-
     /** gets user info from Shared Preferences storage
      * @author Katja Dahlman
      */
@@ -78,7 +77,6 @@ public class UserProfileActivity extends AppCompatActivity {
             getUserInfo();
 
         }
-
     }
 
     /** In this method data that user has filled will be edited, added and applied to Shared Preferences
@@ -137,7 +135,6 @@ public class UserProfileActivity extends AppCompatActivity {
             tvBMIvalue.setText(Integer.toString(userProfile.getBmi()));
         }
         Log.d("Debug", "updateUI() done");
-
     }
 
     //Got inspiration and help from https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
@@ -178,9 +175,5 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
-
 }
-
-
-
 
