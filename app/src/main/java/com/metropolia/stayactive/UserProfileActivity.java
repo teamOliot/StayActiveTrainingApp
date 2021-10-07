@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+/**@author Katja Dahlman
+ *
+ */
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -30,7 +32,10 @@ public class UserProfileActivity extends AppCompatActivity {
 
     boolean isAllFieldsChecked = false;
 
-
+    /** On create where content is set user info is fetched from shared preferences
+     * @author Katja Dahlman
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,9 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
 
+    /** gets user info from Shared Preferences storage
+     * @author Katja Dahlman
+     */
     public void getUserInfo() {
         // getting saved info from Shared Preferences storage called userProfileStorage
         userProfileStorage = getSharedPreferences("userProfileStorage", Activity.MODE_PRIVATE);
@@ -55,6 +63,11 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     // Saving user information when @imageButtonSave is pressed
+
+    /** Method for saving information user has inputted. Also doing data validation before saving.
+     * @author Katja Dahlman
+     * @param v
+     */
     public void saveUserProfile(View v) {
         isAllFieldsChecked = CheckAllFields();
         Log.d("Debug", "imageButtonSave pressed");
@@ -68,7 +81,9 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
-    // editing and adding user input values to Shared Preferences
+    /** In this method data that user has filled will be edited, added and applied to Shared Preferences
+     * @author Katja Dahlman
+     */
     public void saveInfo() {
         SharedPreferences.Editor userProfileEditor = userProfileStorage.edit();
         // Finding user name field and extracting text to variable, and putting it to editor
@@ -88,16 +103,15 @@ public class UserProfileActivity extends AppCompatActivity {
         Log.d("Debug", "saveInfo() done");
     }
 
-    // Method for updating UI (edit text views)
-
-
+    /** Method for updating user interface and setting values in text fields and edit text fields.
+     * @author Katja Dahlman
+     */
     public void updateUI() {
         editTextUserName = findViewById(R.id.editTextUserNameValue);
         editTextUserName.setText(userProfile.getUserName());
         /* Weight, Height and Exercise goal are integers, and value 0 has been given as preset to Shared preferences onCreate
         Here if value is 0, text will be set to empty, so hints are visible, otherwise saved info is fetched. Username is string, so value has been saved as empty.
         */
-
         editTextWeight = findViewById(R.id.editTextWeightValue);
         if (userProfile.getWeight() != 0) {
             editTextWeight.setText(Integer.toString(userProfile.getWeight()));
@@ -126,11 +140,13 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
-    //Method for checking if inserted text is empty
-    // https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
-
+    //Got inspiration and help from https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
+    /** Method for data validation.
+     * @author Katja Dahlman
+     * @return Returns true when all fields are checked and correct. Used to validate user inputted data before saving
+     *
+     */
     private boolean CheckAllFields() {
-
         if (editTextUserName.length() == 0) {
             Log.d("Debug", "editTextUserName error set");
             editTextUserName.setError("Tämä kenttä on pakollinen");

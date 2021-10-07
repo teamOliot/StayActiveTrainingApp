@@ -1,4 +1,5 @@
 <resources>
+    <!--@Authors Katja Dahlman, Iina Laamo,Henrik Lappi -->
     <!-- Main activity strings-->
     <string name="app_name">StayActive</string>
     <string name="button_user">Käyttäjäprofiili</string>
