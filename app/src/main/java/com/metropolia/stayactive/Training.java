@@ -1,6 +1,12 @@
 package com.metropolia.stayactive;
 
-// with comparable interface you can compare objects
+/**
+ * A Class for Training
+ * Implements Comparable interface to compare objects
+ * @author Iina Laamo
+ * @author Henrik Lappi
+ * @version 10/2021
+ */
 public class Training implements Comparable<Training> {
     private String trainingType;
     private int trainingLength;
@@ -8,6 +14,14 @@ public class Training implements Comparable<Training> {
     private int month;
     private int day;
 
+    /**
+     * Class variables and constructor for Training with info user has provided
+     * @param trainingType for example "juoksu" or "kuntosali"
+     * @param trainingLength in minutes
+     * @param year of training date
+     * @param month of training date
+     * @param day of training date
+     */
     public Training (String trainingType, int trainingLength, int year, int month, int day) {
         this.trainingType = trainingType;
         this.trainingLength = trainingLength;
@@ -16,26 +30,51 @@ public class Training implements Comparable<Training> {
         this.day = day;
     }
 
+    /**
+     * Gets and returns trainingType
+     * @return String trainingType
+     */
     public String getTrainingType() {
         return this.trainingType;
     }
 
+    /**
+     * Gets and returns trainingLength
+     * @return int trainingLength
+     */
     public int getTrainingLength() {
         return this.trainingLength;
     }
 
+    /**
+     * Gets and returns year
+     * @return int year
+     */
     public int getYear() {
         return this.year;
     }
 
+    /**
+     * Gets and returns month
+     * @return int month
+     */
     public int getMonth() {
         return this.month;
     }
 
+    /**
+     * Gets and returns day
+     * @return int day
+     */
     public int getDay() {
         return this.day;
     }
 
+    /**
+     * Forms and returns trainingDate based on this.year, this.month, this.day
+     * Formats dayValue and month value to always contain two characters
+     * @return String formed trainingDate
+     */
     public String trainingDate() {
         String dayValue = Integer.toString(this.day);
         String monthValue = Integer.toString(this.month);
@@ -55,8 +94,11 @@ public class Training implements Comparable<Training> {
         return trainingDate() + " " + this.trainingType;
     }
 
-    // With Comparable interface's compareTo method you can create your own compare rules
-    // This compareTo method comparing trainings dates (int year, int month, int day)
+    /**
+     * compareTo method compares trainings dates (int year, int month, int day)
+     * With Comparable interface's compareTo method you can create your own compare rules
+     * @return int returnValue
+     */
     @Override
     public int compareTo(Training training) {
         // Compares years of two training and returns comparing value (0, 1, -1)
@@ -77,7 +119,13 @@ public class Training implements Comparable<Training> {
         return returnValue;
     }
 
-    // Method for helping compareTo method
+    /**
+     * Compares int type numbers
+     * Helps compareTo method
+     * @param firstNumber
+     * @param secondNumber
+     * @return int value (-1, 0 or 1)
+     */
     public int comparator (int firstNumber, int secondNumber) {
         if (firstNumber == secondNumber) {
             return 0;

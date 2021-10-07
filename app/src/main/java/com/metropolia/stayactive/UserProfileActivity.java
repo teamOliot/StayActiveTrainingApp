@@ -10,30 +10,31 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/**@author Katja Dahlman
- *
+/**
+ * @author Katja Dahlman
+ * @version 10/2021
  */
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    //variable for user profile object
+    // Variable for user profile object
     private UserProfile userProfile;
 
     // Shared preferences storage for user profile info
     private SharedPreferences userProfileStorage;
 
-    //variables for saving and retrieving User Profile info that user has inputted and has been saved to shared preferences
+    // Variables for saving and retrieving User Profile info that user has inputted and has been saved to shared preferences
     private String savedUserName;
     private Integer savedWeight, savedHeight, savedExerciseGoal;
 
-    // variables for Edit Text views: username, weight, height and exercise goal
+    // Variables for Edit Text views: username, weight, height and exercise goal
     private EditText editTextUserName, editTextWeight, editTextHeight, editExerciseGoal;
     private TextView tvBMIvalue;
 
     boolean isAllFieldsChecked = false;
 
-    /** On create where content is set user info is fetched from shared preferences
-     * @author Katja Dahlman
+    /**
+     * On create where content is set user info is fetched from shared preferences
      * @param savedInstanceState
      */
     @Override
@@ -44,45 +45,43 @@ public class UserProfileActivity extends AppCompatActivity {
         Log.d("Debug", "OnCreate () done");
     }
 
-
-    /** gets user info from Shared Preferences storage
-     * @author Katja Dahlman
+    /**
+     * Gets user info from Shared Preferences storage
      */
     public void getUserInfo() {
-        // getting saved info from Shared Preferences storage called userProfileStorage
+        // Getting saved info from Shared Preferences storage called userProfileStorage
         userProfileStorage = getSharedPreferences("userProfileStorage", Activity.MODE_PRIVATE);
-        // getting saved values from user
+        // Getting saved values from user
         savedUserName = userProfileStorage.getString("userName", "");
         savedWeight = userProfileStorage.getInt("weight", 0);
         savedHeight = userProfileStorage.getInt("height", 0);
         savedExerciseGoal = userProfileStorage.getInt("exerciseGoal", 0);
         // Creating userProfile object with stored information
         userProfile = new UserProfile(savedUserName, savedWeight, savedHeight, savedExerciseGoal);
-        // using method to update UI
+        // Using method to update UI
         updateUI();
     }
 
     // Saving user information when @imageButtonSave is pressed
 
-    /** Method for saving information user has inputted. Also doing data validation before saving.
-     * @author Katja Dahlman
+    /**
+     * Method for saving information user has inputted. Also doing data validation before saving.
      * @param v
      */
     public void saveUserProfile(View v) {
         isAllFieldsChecked = CheckAllFields();
         Log.d("Debug", "imageButtonSave pressed");
         if (isAllFieldsChecked) {
-            // calling saveInfo() method if all fields are filled
+            // Calling saveInfo() method if all fields are filled
             saveInfo();
-            // calling getUserInfo() so that saved user info is also updated to UI
+            // Calling getUserInfo() so that saved user info is also updated to UI
             getUserInfo();
 
         }
-
     }
 
-    /** In this method data that user has filled will be edited, added and applied to Shared Preferences
-     * @author Katja Dahlman
+    /**
+     * In this method data that user has filled will be edited, added and applied to Shared Preferences
      */
     public void saveInfo() {
         SharedPreferences.Editor userProfileEditor = userProfileStorage.edit();
@@ -98,13 +97,13 @@ public class UserProfileActivity extends AppCompatActivity {
         // Finding exercise goal field and extracting text to variable, and putting it to editor
         savedExerciseGoal = Integer.parseInt(editExerciseGoal.getText().toString());
         userProfileEditor.putInt("exerciseGoal", savedExerciseGoal);
-        // committing all changes
+        // Committing all changes
         userProfileEditor.apply();
         Log.d("Debug", "saveInfo() done");
     }
 
-    /** Method for updating user interface and setting values in text fields and edit text fields.
-     * @author Katja Dahlman
+    /**
+     * Method for updating user interface and setting values in text fields and edit text fields
      */
     public void updateUI() {
         editTextUserName = findViewById(R.id.editTextUserNameValue);
@@ -137,14 +136,12 @@ public class UserProfileActivity extends AppCompatActivity {
             tvBMIvalue.setText(Integer.toString(userProfile.getBmi()));
         }
         Log.d("Debug", "updateUI() done");
-
     }
 
-    //Got inspiration and help from https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
-    /** Method for data validation.
-     * @author Katja Dahlman
-     * @return Returns true when all fields are checked and correct. Used to validate user inputted data before saving
-     *
+    // Got inspiration and help from https://www.geeksforgeeks.org/implement-form-validation-error-to-edittext-in-android/
+    /**
+     * Method for data validation
+     * @return Returns true when all fields are checked and correct. Used to validate user inputted data before saving.
      */
     private boolean CheckAllFields() {
         if (editTextUserName.length() == 0) {
@@ -173,14 +170,7 @@ public class UserProfileActivity extends AppCompatActivity {
             return false;
         }
         Log.d("Debug", "CheckAllFields() done");
-        // after all validation done and user has corrected them, return true
+        // After all validation done and user has corrected them, return true
         return true;
-
     }
-
-
 }
-
-
-
-

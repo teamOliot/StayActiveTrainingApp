@@ -18,7 +18,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
         app:layout_constraintTop_toTopOf="parent">
-
     </ListView>
 
     <Button

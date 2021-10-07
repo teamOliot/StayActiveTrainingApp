@@ -7,9 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * Activity for displaying certain training's details
+ * @author Henrik Lappi
+ * @author Iina Laamo
+ * @version 10/2021
+ */
 public class TrainingDetailsActivity extends AppCompatActivity {
     private int i;
 
+    /**
+     * On create gets and displays certain training's details based on training's index value in Trainings list
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +39,11 @@ public class TrainingDetailsActivity extends AppCompatActivity {
                 .setText(Trainings.getInstance().getTraining(i).getTrainingLength() + " minuuttia");
     }
 
-    // Method for deleting certain training from Trainings list
+    /**
+     * Deletes certain training from Trainings list based on training's index
+     * Contains AlertDialog to confirm whether user wants to delete the training or not
+     * @param view
+     */
     public void deleteTraining (View view) {
         // AlertDialog - https://stackoverflow.com/questions/22424064/creating-simple-confirmation-dialog-on-button-press-android/22424098
         AlertDialog.Builder builder = new AlertDialog.Builder(TrainingDetailsActivity.this);
@@ -49,7 +63,6 @@ public class TrainingDetailsActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
         AlertDialog alert = builder.create();
         alert.show();
     }
